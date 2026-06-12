@@ -1,0 +1,23 @@
+name: Email Automation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    env:
+      EMAIL_PASS: ${{ secrets._EMAIL_PASS_ }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run script
+        run: python main.py
