@@ -2,8 +2,8 @@ import os
 import smtplib
 
 # Sender and receiver email addresses
-sender = "your_email@gmail.com"
-receiver = "recipient_email@gmail.com"
+sender = "snehasanthosh360@gmail.com"
+receiver = "sanjaysanthosh411@gmail.com"
 
 # Read password from environment variable
 password = os.environ.get("EMAIL_PASS")
