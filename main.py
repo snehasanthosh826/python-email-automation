@@ -4,7 +4,7 @@ import os
 sender = "snehasanthosh360@gmail.com"
 receiver = "Sanjaysanthosh411@gmail.com"
 
-password = os.environ.get("_EMAIL_PASS_")
+password = os.environ.get("EMAIL_PASS")
 tasks = [
     "Check logs",
     "Backup database",
