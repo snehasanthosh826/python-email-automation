@@ -4,13 +4,21 @@ import os
 sender = "snehasanthosh360@gmail.com"
 receiver = "Sanjaysanthosh411@gmail.com"
 
-password = os.environ.get("EMAIL_PASS")
-message = """
-Subject: Test Email
+password = os.environ.get("_EMAIL_PASS_")
+tasks = [
+    "Check logs",
+    "Backup database",
+    "Clear cache"
+]
 
-Hello!
+body = "\n".join(tasks)
 
-This email was sent using Python.
+message = f"""
+Subject: Daily Report
+
+Completed Tasks:
+
+{body}
 """
 
 server = smtplib.SMTP(
