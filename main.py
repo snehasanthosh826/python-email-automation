@@ -1,44 +1,63 @@
-import smtplib
 import os
+import smtplib
 
-sender = "snehasanthosh360@gmail.com"
-receiver = "Sanjaysanthosh411@gmail.com"
+# Sender and receiver email addresses
+sender = "your_email@gmail.com"
+receiver = "recipient_email@gmail.com"
 
+# Read password from environment variable
 password = os.environ.get("EMAIL_PASS")
+
+# Check if password exists
+if password is None:
+    print("ERROR: EMAIL_PASS not found!")
+    exit()
+
+# Sample tasks for the report
 tasks = [
     "Check logs",
     "Backup database",
     "Clear cache"
 ]
 
+# Convert list to readable text
 body = "\n".join(tasks)
 
-message = f"""
-Subject: Daily Report
+# Create email message
+message = f"""Subject: Daily Report
+
+Hello,
 
 Completed Tasks:
 
 {body}
+
+Regards,
+Python Automation
 """
 
-server = smtplib.SMTP(
-    "smtp.gmail.com",
-    587
-)
+try:
+    print("Connecting to Gmail...")
 
-server.starttls()
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
 
-server.login(
-    sender,
-    password
-)
+    print("Logging in...")
 
-server.sendmail(
-    sender,
-    receiver,
-    message
-)
+    server.login(sender, password)
 
-server.quit()
+    print("Sending email...")
 
-print("Email sent successfully!")
+    server.sendmail(
+        sender,
+        receiver,
+        message
+    )
+
+    server.quit()
+
+    print("Email sent successfully!")
+
+except Exception as e:
+    print("Error:", e)
+ 
